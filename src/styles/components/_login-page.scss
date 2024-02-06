@@ -1,6 +1,6 @@
 /* CSS for RegisterForm component */
 body {
-    background-image: url('../../assets/img/background.jpg'); /* Specify the path to your body background image */
+    background-image: url('../../assets/img/bg123.avif'); /* Specify the path to your body background image */
     background-size: cover; /* Adjust the background image size */
     background-position: center; /* Center the background image */
     margin: 0;
@@ -18,7 +18,7 @@ form {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    background-image: url('../../assets/img/background.jpg'); /* Specify the path to your background image */
+    background-image: url('../../assets/img/1.jpg'); /* Specify the path to your background image */
     background-size: cover; /* Adjust the background image size */
     background-position: center; /* Center the background image */
   }
@@ -38,7 +38,7 @@ form {
     width: 100%;
     padding: 10px;
     margin-top: 50px;
-    background-color: #4CAF50;
+    background-color: $green;
     color: white;
     border: none;
     border-radius: 5px;

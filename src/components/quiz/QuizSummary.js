@@ -1,136 +1,97 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import { Helmet } from "react-helmet";
-import {Link} from "react-router-dom";
-import { uselocation } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 
 class QuizSummary extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
-            score:0,
-            numberofQuestions:15,
-            numberofAnsweredQuestions:0,
-            corerctAnswers:0,
-            wrongAnswers:0,
-            HintsUsed:0,
-            FiftyFiftyUsed:0,
+            score: 0,
+            numberOfQuestions: 0,
+            correctAnswers: 0,
+            wrongAnswers: 0,
+            hintsUsed: 0,
+            fiftyFiftyUsed: 0
         };
     }
 
-
-    componentDidMount () {
-        const {state} = this.state.state|| {};
-        if (state) {
-        this.setState ({
-            score: (state.score / state.numberofQuestions) * 100,
-            numberofQuestions: state.numberofQuestions,
-            numberofAnsweredQuestions:state.numberofAnsweredQuestions,
-            corerctAnswers:state.corerctAnswers,
-            wrongAnswers: state.wrongAnswers,
-            HintsUsed:state.HintsUsed,
-            FiftyFiftyUsed:state.FiftyFiftyUsed,
+    componentDidMount() {
+        const params = new URLSearchParams(window.location.search);
+        this.setState({
+            score: parseFloat(params.get('score')),
+            numberOfQuestions: parseInt(params.get('numberOfQuestions')),
+            correctAnswers: parseInt(params.get('correctAnswers')),
+            wrongAnswers: parseInt(params.get('wrongAnswers')),
+            hintsUsed: parseInt(params.get('hints')),
+            fiftyFiftyUsed: parseInt(params.get('fiftyFifty'))
         });
-      }
     }
-   
-    render () {
-        // const { location } = this.props;
-        // const state = location.state;
-        
-        const { state} = this.props;
-        let stats, remark;
-        const userScore = this.state.score;
-        console.log("score>>>",this.state.score);
 
+    render() {
+        const { score, numberOfQuestions, correctAnswers, wrongAnswers, hintsUsed, fiftyFiftyUsed } = this.state;
+        let remark;
 
-        if(userScore <= 30) {
+        if (score <= 3) {
             remark = 'You need more practice!';
-        } else if (userScore > 30 && userScore <=50) {
+        } else if (score > 3 && score <= 6) {
             remark = 'Better luck next time!';
-        } else if (userScore > 70 && userScore >50) {
+        } else if (score > 6 && score <= 9) {
             remark = 'You can do better!';
-        } else if (userScore >= 71 && userScore <=84) {
+        } else if (score > 9 && score <= 12) {
             remark = 'You did great!';
         } else {
             remark = 'You are an absolute genius!';
         }
-               
-        if (state !== null) {
-            stats = (
-                <Fragment>
-                    <div style={{ textAlign:'center'}}>
-                        <span className="mdi mdi-check-circle-outline success-icon"></span>
-                    </div>
-                    <h1>Quiz has ended</h1>
-                    <div className="container stats">
-                        <h4>{remark}</h4>
-                        <h2>Your Score: {this.state.score.toFixed(0)}&#37;</h2>
-                        <span className="stat left">Total number of questions:</span>
-                        <span className="right">{this.state.numberofQuestions}</span><br />
 
-
-                        <span className="stat left">Number of attempted questions:</span>
-                        <span className="right">{this.state.numberofAnsweredQuestions}</span><br />
-
-
-                        <span className="stat left">Number of Correct Answers:</span>
-                        <span className="right">{this.state.corerctAnswers}</span><br />
-
-
-                        <span className="stat left">Number of Wrong Answers:</span>
-                        <span className="right">{this.state.wrongAnswers}</span><br />
-
-
-                        <span className="stat left">Hints Used:</span>
-                        <span className="right">{this.state.HintsUsed}</span><br />
-
-
-                        <span className="stat left">50-50 Used:</span>
-                        <span className="right">{this.state.FiftyFiftyUsed}</span><br />
-                         </div>
-                    <section>
-                        <ul>
-                            <li>
-                                
-                                <Link to="/play/quiz" className="playAgain">Play Again</Link>
-                                
-                            </li>
-                            <li>
-                               
-                                <Link to="/">Back to Home </Link>
-                                
-                            </li>
-                        </ul>
-                    </section>
-                </Fragment>
-            );
-        }else {
-            stats = (
-                <section>
-                    <h1 className="no-stats">No Statistics Available</h1>
-                        <ul>
-                            <li>
-                                <Link to="/">Back to Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/play/quiz">Take a Quiz</Link>
-                            </li>
-                        </ul>
-                    </section>
-            );
-        }
         return (
             <Fragment>
                 <Helmet><title>Quiz App - Summary</title></Helmet>
-                <div className="quiz-summary"></div>
-                {stats}
+                <div className="quiz-summary">
+                <div style={{ textAlign: 'center' }}>
+                    <span className="mdi mdi-check-circle-outline success-icon"></span>
+                
+                <h1>Quiz has ended</h1>
+                <div className="container stats">
+                    <h4>{remark}</h4>
+                    <h2>Your Score: {score.toFixed(0)}</h2>
+                    <span className="stat left">Total number of questions:</span>
+                    <span className="right">{numberOfQuestions}</span><br />
+
+                    <span className="stat left">Number of attempted questions:</span>
+                    <span className="right">{correctAnswers + wrongAnswers}</span><br />
+
+                    <span className="stat left">Number of Correct Answers:</span>
+                    <span className="right">{correctAnswers}</span><br />
+
+                    <span className="stat left">Number of Wrong Answers:</span>
+                    <span className="right">{wrongAnswers}</span><br />
+
+                    <span className="stat left">Hints Used:</span>
+                    <span className="right">{hintsUsed}</span><br />
+
+                    <span className="stat left">50-50 Used:</span>
+                    <span className="right">{fiftyFiftyUsed}</span><br />
+                </div>
+                <section>
+                    <ul>
+                        <li>
+                            {/* <button> */}
+                            <Link to="/play/quiz" className="playAgain">Play Again</Link>
+                            {/* </button> */}
+                        </li>
+                        <li>
+                            {/* <button> */}
+                            <Link to="/">Back to Home </Link>
+                            {/* </button> */}
+                        </li>
+                    </ul>
+                </section>
+                </div>
+                </div>
             </Fragment>
         );
     }
 }
 
-
 export default QuizSummary;
-// export default withRouter(QuizSummary);

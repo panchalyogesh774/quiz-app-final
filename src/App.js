@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
-import Login from './loginpage';
+import RegisterForm from './registerpage';
 import Home from './components/Home';
 import QuizInstructions from './components/quiz/QuizInstructions';
 import Play from './components/quiz/Play';
@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <Routes>
-       <Route path="/" Component = {Login}/>
+       <Route path="/" Component = {RegisterForm}/>
             <Route path="/play/home"Component={Home} />
             <Route path="/play/instructions" exact Component={QuizInstructions} />
             <Route path="/play/quiz" exact Component={Play} />

@@ -4,7 +4,7 @@ import '../node_modules/@mdi/font/css/materialdesignicons.min.css';
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import './styles/styles.scss';
 import App from './App';
-import Login from './loginpage';
+// import Login from './loginpage';
 
 // ReactDOM.render(
 //     <React.StrictMode>

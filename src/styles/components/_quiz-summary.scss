@@ -3,29 +3,36 @@
 
     span.success-icon {
         color: $green;
+        // color: rgba(0, 0, 0, 0.801);
         font-size: $xxlg;
         font-weight: 100;
     }
 
     h1 {
         color: $green;
+        // color: rgba(0, 0, 0, 0.801);
         text-align: center;
         font-size: $lg;
         margin-top: -$sm;
-        font-weight: 200;
+        font-weight: 600;
     }
 
     h2 {
         color: $blue;
+        font-weight: 600;
     }
 
     h4 {
         color: lighten($off-black, 10%);
+        font-weight: 600;
     }
 
     .stats {
+        background-image: url('../../assets/img/background4.jpeg');
+        background-size: cover; 
+        background-position: 100%;
         background-color: $off-white;
-        max-width: 50%;
+        max-width: 60%;
         padding: $sm $md $md $md;
     }
 
@@ -36,12 +43,13 @@
     .stats .stat {
         color: $off-black;
         font-size: $normal;
+        font-weight: 600;
     }
 
     section ul {
         margin-top: $sm;
         text-align: center;
-        font-weight: 200;
+        font-weight: 600;
     }
 
     section ul li {
@@ -50,6 +58,7 @@
 
     section ul li a {
         padding: $sm !important;
+        
     }
 
     section ul li a:hover {

@@ -23,6 +23,9 @@ const Home = () => (
                  <Link to="/login" className="auth-buttons" id="login-button">Login</Link>
                  <Link to="/register" className="auth-buttons" id="signup-button">Sign up</Link>        
             </div> */}
+            <p style={{ fontSize:'1.5rem',marginTop: '80px', textAlign: 'center', color: 'white',fontWeight:'bold' }}>“Successful and unsuccessful people do not vary greatly in their abilities. They vary in their desires to reach their potential.”</p>
+            <br></br>
+            <p style={{ marginTop: '0px', textAlign: 'right', color: 'white' }}>― John Maxwell</p>
         </section>
     </div>    
     </Fragment>  

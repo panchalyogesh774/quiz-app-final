@@ -2,10 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import M from 'materialize-css';
 import classnames from 'classnames';
-// import { Link } from 'react-router-dom';
-// import { withRouter } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
-
 
 
 
@@ -120,17 +116,36 @@ class Play extends Component {
             });
         }
     };
+
+   
+
     // navigate =useNavigate();
+    // handleQuitButtonClick = () => {
+    //     this.playButtonSound();
+    //     if (window.confirm('Are you sure you want to quit?')) {
+    //         // navigate('/')
+    //         window.location.replace('/play/quizSummary')
+    //         // this.props.history.push('/');
+
+
+    //     }
+    // };
+
     handleQuitButtonClick = () => {
         this.playButtonSound();
+        const { score, numberOfQuestions, correctAnswers, wrongAnswers, fiftyFifty, hints } = this.state;
+        const params = new URLSearchParams();
+        params.append('score', score);
+        params.append('numberOfQuestions', numberOfQuestions);
+        params.append('correctAnswers', correctAnswers);
+        params.append('wrongAnswers', wrongAnswers);
+        params.append('fiftyFifty', 2 - fiftyFifty);
+        params.append('hints', 2 - hints);
         if (window.confirm('Are you sure you want to quit?')) {
-            // navigate('/')
-            window.location.replace('/play/quizSummary')
-            // this.props.history.push('/');
-
-
+        window.location.replace(`/play/quizSummary?${params.toString()}`);
         }
-    };
+    }
+    
 
 
     handleButtonClick = (e) => {
@@ -358,26 +373,41 @@ class Play extends Component {
     }
 
 
+    // endGame = () => {
+    //     alert('Quiz has ended!');
+    //     const { state } = this;
+    //     const playerStats = {
+    //         score: state.score,
+    //         numberOfQuestions: state.numberOfQuestions,
+    //         numberOfAnsweredQuestions: state.correctAnswers + state.wrongAnswers,
+    //         correctAnswers: state.correctAnswers,
+    //         wrongAnswers: state.wrongAnswers,
+    //         fiftyFiftyUsed: 2 - state.fiftyFifty,
+    //         hintsUsed: 2 - state.hints
+    //     };
+        
+    //     setTimeout(() => {
+    //         window.location.replace('/play/quizSummary', playerStats);
+    //     }, 1000);
+    // }
+
     endGame = () => {
-        // const history = useHistory; // Get history from props
         alert('Quiz has ended!');
-        const { state } = this;
+        const { score, numberOfQuestions, correctAnswers, wrongAnswers, hints, fiftyFifty } = this.state;
         const playerStats = {
-            score: state.score,
-            numberOfQuestions: state.numberOfQuestions,
-            numberOfAnsweredQuestions: state.correctAnswers + state.wrongAnswers,
-            correctAnswers: state.correctAnswers,
-            wrongAnswers: state.wrongAnswers,
-            fiftyFiftyUsed: 2 - state.fiftyFifty,
-            hintsUsed: 2 - state.hints
+            score: score,
+            numberOfQuestions: numberOfQuestions,
+            correctAnswers: correctAnswers,
+            wrongAnswers: wrongAnswers,
+            hints:2- hints,
+            fiftyFifty: 2 - fiftyFifty
         };
-        // history.push({
-        //     pathname: '/play/quizSummary',
-        //     state: playerStats // playerStats is the data you want to pass
-        // });
-        setTimeout(() => {
-            window.location.replace('/play/quizSummary', playerStats);
-        }, 1000);
+    
+        const queryString = Object.keys(playerStats)
+            .map(key => `${key}=${playerStats[key]}`)
+            .join('&');
+    
+        window.location.replace(`/play/quizSummary?${queryString}`);
     }
 
 
