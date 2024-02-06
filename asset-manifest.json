@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/quiz-app-final/static/css/main.69d257cd.css",
+    "main.js": "/quiz-app-final/static/js/main.e916c386.js",
+    "static/media/materialdesignicons-webfont.eot": "/quiz-app-final/static/media/materialdesignicons-webfont.b04f03f08b5445700a30.eot",
+    "static/media/materialdesignicons-webfont.ttf?v=7.3.67": "/quiz-app-final/static/media/materialdesignicons-webfont.89ae221302c6617c0a87.ttf",
+    "static/media/materialdesignicons-webfont.woff?v=7.3.67": "/quiz-app-final/static/media/materialdesignicons-webfont.7484a6c648c26cc63e73.woff",
+    "static/media/1.jpg": "/quiz-app-final/static/media/1.50bb0bed9314378cd9c8.jpg",
+    "static/media/materialdesignicons-webfont.woff2?v=7.3.67": "/quiz-app-final/static/media/materialdesignicons-webfont.f97b38e4afe65388b4f0.woff2",
+    "static/media/wrong-answer.mp3": "/quiz-app-final/static/media/wrong-answer.a800d8f6d77100112d71.mp3",
+    "static/media/correct-answer.mp3": "/quiz-app-final/static/media/correct-answer.fd2c2fea27379cbc44da.mp3",
+    "static/media/answers.png": "/quiz-app-final/static/media/answers.86a2955ccaff00f1a099.png",
+    "static/media/options.png": "/quiz-app-final/static/media/options.90fde3c71d8fc40d4344.png",
+    "static/media/fiftyFifty.png": "/quiz-app-final/static/media/fiftyFifty.832a10737058d131d066.png",
+    "static/media/hints.png": "/quiz-app-final/static/media/hints.561e0f0648c9ec15e582.png",
+    "static/media/button-sound.mp3": "/quiz-app-final/static/media/button-sound.e24e3d3905e012cf714d.mp3",
+    "static/media/playimg0000.jpg": "/quiz-app-final/static/media/playimg0000.c840fceff972dcfda8b1.jpg",
+    "static/media/bg123.avif": "/quiz-app-final/static/media/bg123.b025eb70a42ed11843a5.avif",
+    "index.html": "/quiz-app-final/index.html",
+    "main.69d257cd.css.map": "/quiz-app-final/static/css/main.69d257cd.css.map",
+    "main.e916c386.js.map": "/quiz-app-final/static/js/main.e916c386.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69d257cd.css",
+    "static/js/main.e916c386.js"
+  ]
+}
