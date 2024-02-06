@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
       if (response.ok) {
         console.log('User registered successfully');
-        window.location.replace('/play/home')
+        // window.location.replace('/play/home')
         // Redirect to login page or perform any other action
       } else {
         console.error('Failed to register user');

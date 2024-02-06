@@ -2,6 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import M from 'materialize-css';
 import classnames from 'classnames';
+// import { Link } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+
+
 
 
 import questions from '../../questions.json';
@@ -354,6 +359,7 @@ class Play extends Component {
 
 
     endGame = () => {
+        // const history = useHistory; // Get history from props
         alert('Quiz has ended!');
         const { state } = this;
         const playerStats = {
@@ -365,6 +371,10 @@ class Play extends Component {
             fiftyFiftyUsed: 2 - state.fiftyFifty,
             hintsUsed: 2 - state.hints
         };
+        // history.push({
+        //     pathname: '/play/quizSummary',
+        //     state: playerStats // playerStats is the data you want to pass
+        // });
         setTimeout(() => {
             window.location.replace('/play/quizSummary', playerStats);
         }, 1000);

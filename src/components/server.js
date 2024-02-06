@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 // PostgreSQL connection configuration
 const pool = new Pool({
   user: 'postgres',
-  host: 'localhost',
+  host: '127.0.0.1',
   database: 'my_project',
   password: '123456',
   port: 5432, // PostgreSQL default port
@@ -23,6 +23,7 @@ app.post('/register', async (req, res) => {
 
   try {
     const client = await pool.connect();
+    console.log("hhh", client);
     const result = await client.query('INSERT INTO quiz (username, email, password) VALUES ($1, $2, $3)', [username, email, password]);
     client.release();
     console.log('User registered successfully:', result.rows[0]);
