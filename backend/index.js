@@ -27,7 +27,7 @@ app.post('/api/register', async (req, res) => {
 
   try {
     // Insert user data into the database
-    const query = 'INSERT INTO quiz (username, email, password) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO app (username, email, password) VALUES ($1, $2, $3)';
     const values = [username, email, password];
     await pool.query(query, values);
 

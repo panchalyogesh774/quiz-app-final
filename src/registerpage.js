@@ -10,6 +10,8 @@ const RegisterForm = () => {
     password: ''
   });
 
+  const [emailError, setEmailError] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -18,8 +20,18 @@ const RegisterForm = () => {
     }));
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
 
     try {
       const response = await axios.post('http://localhost:5000/api/register', formData);
@@ -50,6 +62,7 @@ const RegisterForm = () => {
         onChange={handleChange} 
         required 
       />
+      {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
       <input 
         type="password" 
         name="password" 
